@@ -9,6 +9,26 @@
             "projectName": "microservice",
             "args": "",
             "envFile": "${workspaceFolder}/.env"
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-MicroservicesIngredientsApplication<microservices_ingredients>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.agarcia.microservices_ingredients.MicroservicesIngredientsApplication",
+            "projectName": "microservices_ingredients",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-EurekaApplication<eureka>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.agarcia.eureka.EurekaApplication",
+            "projectName": "eureka",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
         }
     ]
 }

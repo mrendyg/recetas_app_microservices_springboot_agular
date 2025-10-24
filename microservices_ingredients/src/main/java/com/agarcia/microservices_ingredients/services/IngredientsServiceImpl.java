@@ -1,4 +1,4 @@
-package com.andyg.microservice.services;
+package com.agarcia.microservices_ingredients.services;
 
 import java.util.Optional;
 
@@ -6,8 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.andyg.microservice.persistence.models.IngredientsEntity;
-import com.andyg.microservice.persistence.repository.IngredientsRepository;
+import com.agarcia.microservices_ingredients.persistence.models.IngredientsEntity;
+import com.agarcia.microservices_ingredients.persistence.repository.IngredientsRepository;
 
 
 
