@@ -1,18 +1,10 @@
 package com.agarcia.microservices_ingredients.services;
 
-import java.util.Optional;
-
+import com.agarcia.commons_microservices.services.CommonService;
 import com.agarcia.microservices_ingredients.persistence.models.IngredientsEntity;
 
-
-public interface IngredientsService {
+public interface IngredientsService extends CommonService<IngredientsEntity> {
     
-    public Iterable<IngredientsEntity> findAll();
 
-    public Optional<IngredientsEntity> findById(Long id);
-
-    public IngredientsEntity save(IngredientsEntity ingredientsEntity);
-
-    public void deleteById(Long id);
 
 }

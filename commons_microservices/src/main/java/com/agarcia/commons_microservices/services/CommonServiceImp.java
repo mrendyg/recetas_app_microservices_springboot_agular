@@ -8,28 +8,32 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 @Service
-public class CommonServiceImp<E, R extends CrudRepository<E, Long>> implements CommonService {
+public class CommonServiceImp<E, R extends CrudRepository<E, Long>> implements CommonService<E> {
     
     @Autowired
-    private R repository;
+    protected R repository; // Cambiado a protected para mejor acceso
 
+    @Override
     @Transactional(readOnly = true)
     public Iterable<E> findAll(){
         return repository.findAll();
     }
 
+    @Override
     @Transactional(readOnly = true)
     public Optional<E> findById(Long id) {
         return repository.findById(id);
     }
 
+    @Override
     @Transactional
-    public E save (E entity) {
+    public E save(E entity) {
         return repository.save(entity);
     }
 
+    @Override
     @Transactional
-    public void deleteById (Long id) {
+    public void deleteById(Long id) {
         repository.deleteById(id);
     }
 }
