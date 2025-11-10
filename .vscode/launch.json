@@ -5,7 +5,8 @@
             "name": "MicroserviceZuulApplication",
             "request": "launch",
             "mainClass": "com.agarcia.microservice_zuul.MicroserviceZuulApplication",
-            "projectName": "microservice_zuul"
+            "projectName": "microservice_zuul",
+            "vmArgs": " -Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.port=54473 -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false -Dspring.jmx.enabled=true -Djava.rmi.server.hostname=localhost -Dspring.application.admin.enabled=true -Dspring.boot.project.name=microservice_zuul"
         },
         {
             "type": "java",
@@ -25,7 +26,8 @@
             "mainClass": "com.agarcia.microservices_ingredients.MicroservicesIngredientsApplication",
             "projectName": "microservices_ingredients",
             "args": "",
-            "envFile": "${workspaceFolder}/.env"
+            "envFile": "${workspaceFolder}/.env",
+            "vmArgs": " -Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.port=54471 -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false -Dspring.jmx.enabled=true -Djava.rmi.server.hostname=localhost -Dspring.application.admin.enabled=true -Dspring.boot.project.name=microservices_ingredients"
         },
         {
             "type": "java",
@@ -34,6 +36,17 @@
             "cwd": "${workspaceFolder}",
             "mainClass": "com.agarcia.eureka.EurekaApplication",
             "projectName": "eureka",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env",
+            "vmArgs": " -Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.port=54449 -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false -Dspring.jmx.enabled=true -Djava.rmi.server.hostname=localhost -Dspring.application.admin.enabled=true -Dspring.boot.project.name=eureka"
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-MicroserviceCookbookApplication<microservice_cookbook>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.agarcia.microservice_cookbook.MicroserviceCookbookApplication",
+            "projectName": "microservice_cookbook",
             "args": "",
             "envFile": "${workspaceFolder}/.env"
         }

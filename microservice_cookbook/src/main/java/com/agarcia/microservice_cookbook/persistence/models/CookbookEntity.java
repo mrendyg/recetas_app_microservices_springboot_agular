@@ -1,4 +1,20 @@
-package main.java.com.agarcia.microservice_cookbook.persistence.models;
+package com.agarcia.microservice_cookbook.persistence.models;
+
+import java.util.Date;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.PrePersist;
+import jakarta.persistence.Table;
+import jakarta.persistence.Temporal;
+import jakarta.persistence.TemporalType;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Entity
 @Table(name = "cookbook")
@@ -8,33 +24,21 @@ package main.java.com.agarcia.microservice_cookbook.persistence.models;
 @AllArgsConstructor
 public class CookbookEntity {
 
+    @Id
+    @GeneratedValue( strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
     private String image;
     private String description;
     private String instructions;
-    private int time_of_preparation;
 
-    @Enumerated(EnumType.STRING)
-    @Column(nullable = false)
-    private Difficulty difficulty;
+    @Column(name="create_at")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date createAt;
 
-}
-
-// Enum de Dificultad
-public enum Difficulty {
-    BEGINNER("Principiante"),
-    INTERMEDIATE("Intermedio"), 
-    ADVANCED("Avanzado"),
-    EXPERT("Experto");
-    
-    private final String displayName;
-    
-    Difficulty(String displayName) {
-        this.displayName = displayName;
+    @PrePersist
+    public void prePersist() {
+        this.createAt = new Date();
     }
-    
-    public String getDisplayName() {
-        return displayName;
-    }
+
 }
