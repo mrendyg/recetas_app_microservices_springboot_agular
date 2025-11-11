@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.agarcia.commons_ingredients.persistence.models.IngredientsEntity;
 import com.agarcia.commons_microservices.services.controller.CommonController;
-import com.agarcia.microservices_ingredients.persistence.models.IngredientsEntity;
 import com.agarcia.microservices_ingredients.services.IngredientsService;
 
 @RestController

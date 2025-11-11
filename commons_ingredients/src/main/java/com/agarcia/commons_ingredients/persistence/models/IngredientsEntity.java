@@ -1,4 +1,4 @@
-package com.agarcia.microservices_ingredients.persistence.models;
+package com.agarcia.commons_ingredients.persistence.models;
 
 import java.util.Date;
 
