@@ -17,7 +17,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-
 @Setter
 @Getter
 @AllArgsConstructor
@@ -46,6 +45,17 @@ public class IngredientsEntity {
     @PrePersist
     protected void onCreate() {
         createAt = new Date();
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (obj instanceof IngredientsEntity){
+            return false;
+        }
+        IngredientsEntity other = (IngredientsEntity) obj;
+        return this.id != null && this.id.equals(other.getId());
     }
 
 }
