@@ -2,6 +2,8 @@ package com.agarcia.microservice_cookbook.persistence.models;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
+
 import com.agarcia.commons_ingredients.persistence.models.IngredientsEntity;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -15,7 +17,6 @@ import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -53,8 +54,21 @@ public class CookbookEntity {
         this.ingredients.add(ingredient);
     }
 
-    public void removeIngredient(IngredientsEntity ingredient) {
-        this.ingredients.remove(ingredient);
+    public boolean removeIngredient(IngredientsEntity ingredient) {
+        if (this.ingredients == null || ingredient == null || ingredient.getId() == null) {
+            return false;
+        }
+        
+        // Buscar el ingrediente real en la lista por ID
+        Optional<IngredientsEntity> ingredientToRemove = this.ingredients.stream()
+            .filter(ing -> ingredient.getId().equals(ing.getId()))
+            .findFirst();
+        
+        if (ingredientToRemove.isPresent()) {
+            return this.ingredients.remove(ingredientToRemove.get());
+        }
+        
+        return false;
     }
 
 }

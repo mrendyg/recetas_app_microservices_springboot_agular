@@ -24,7 +24,7 @@ public class CookbookController extends CommonController<CookbookEntity, Cookboo
     @PathVariable Long id) {
         Optional<CookbookEntity> o = service.findById(id);
 
-        if (o.isPresent()) {
+        if (!o.isPresent()) {
             return ResponseEntity.notFound().build();
         }
 
@@ -39,7 +39,7 @@ public class CookbookController extends CommonController<CookbookEntity, Cookboo
     @PutMapping("/{id}/add-ingredient")
     public ResponseEntity<?> addIngredient(@RequestBody List<IngredientsEntity> ingredient, @PathVariable Long id) {
         Optional<CookbookEntity> o = service.findById(id);
-        if (o.isPresent()) {
+        if (!o.isPresent()) {
             return ResponseEntity.notFound().build();
         }
         CookbookEntity cookbookDb = o.get();
@@ -51,16 +51,30 @@ public class CookbookController extends CommonController<CookbookEntity, Cookboo
         return ResponseEntity.status(HttpStatus.CREATED).body(service.save(cookbookDb));
     }
 
-    @DeleteMapping("/{id}/delete-ingredient")
-    public ResponseEntity<?> addIngredient(@RequestBody IngredientsEntity ingredient, @PathVariable Long id) {
+    @PutMapping("/{id}/remove-ingredient")  // ✅ Nombre coherente
+    public ResponseEntity<?> removeIngredient(@RequestBody IngredientsEntity ingredient, @PathVariable Long id) {
         Optional<CookbookEntity> o = service.findById(id);
-        if (o.isPresent()) {
+        
+        if (!o.isPresent()) {
             return ResponseEntity.notFound().build();
         }
+        
+        // ✅ Validación de entrada
+        if (ingredient == null || ingredient.getId() == null) {
+            return ResponseEntity.badRequest().body("El ingrediente y su ID son requeridos");
+        }
+        
         CookbookEntity cookbookDb = o.get();
         
-        cookbookDb.removeIngredient(ingredient);
-        return ResponseEntity.status(HttpStatus.CREATED).body(service.save(cookbookDb));
+        // ✅ Verificar si se eliminó correctamente
+        boolean removed = cookbookDb.removeIngredient(ingredient);
+        
+        if (!removed) {
+            return ResponseEntity.badRequest().body("El ingrediente no fue encontrado en el cookbook");
+        }
+        
+        CookbookEntity updatedCookbook = service.save(cookbookDb);
+        return ResponseEntity.ok(updatedCookbook);  // ✅ 200 OK es suficiente
     }
     
 }
