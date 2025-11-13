@@ -32,6 +32,8 @@ public class IngredientsEntity {
 
     private String name;
 
+    private String brand;
+
     private int quantity;
 
     private int cost;

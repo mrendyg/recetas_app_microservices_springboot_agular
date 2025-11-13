@@ -25,12 +25,13 @@ public class IngredientsController extends CommonController<IngredientsEntity, I
             ResponseEntity.notFound().build();
         }
 
-        IngredientsEntity ingredientesDB = o.get();
-        ingredientesDB.setName(ingredientsEntity.getName());
-        ingredientesDB.setQuantity(ingredientsEntity.getQuantity());
-        ingredientesDB.setCost(ingredientesDB.getCost());
-        ingredientesDB.setStock(ingredientesDB.getStock());
-        return ResponseEntity.status(HttpStatus.ACCEPTED).body(service.save(ingredientesDB));
+        IngredientsEntity ingredientsDB = o.get();
+        ingredientsDB.setName(ingredientsEntity.getName());
+        ingredientsDB.setBrand(ingredientsEntity.getBrand());
+        ingredientsDB.setQuantity(ingredientsEntity.getQuantity());
+        ingredientsDB.setCost(ingredientsEntity.getCost());
+        ingredientsDB.setStock(ingredientsEntity.getStock());
+        return ResponseEntity.status(HttpStatus.ACCEPTED).body(service.save(ingredientsDB));
     }
 
 }
