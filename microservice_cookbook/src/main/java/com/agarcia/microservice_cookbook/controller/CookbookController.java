@@ -51,7 +51,7 @@ public class CookbookController extends CommonController<CookbookEntity, Cookboo
         return ResponseEntity.status(HttpStatus.CREATED).body(service.save(cookbookDb));
     }
 
-    @PutMapping("/{id}/remove-ingredient")  // ✅ Nombre coherente
+    @PutMapping("/{id}/remove-ingredient") 
     public ResponseEntity<?> removeIngredient(@RequestBody IngredientsEntity ingredient, @PathVariable Long id) {
         Optional<CookbookEntity> o = service.findById(id);
         
@@ -59,14 +59,14 @@ public class CookbookController extends CommonController<CookbookEntity, Cookboo
             return ResponseEntity.notFound().build();
         }
         
-        // ✅ Validación de entrada
+        //Validación de entrada
         if (ingredient == null || ingredient.getId() == null) {
             return ResponseEntity.badRequest().body("El ingrediente y su ID son requeridos");
         }
         
         CookbookEntity cookbookDb = o.get();
         
-        // ✅ Verificar si se eliminó correctamente
+        // Verificar si se eliminó correctamente
         boolean removed = cookbookDb.removeIngredient(ingredient);
         
         if (!removed) {
@@ -74,7 +74,7 @@ public class CookbookController extends CommonController<CookbookEntity, Cookboo
         }
         
         CookbookEntity updatedCookbook = service.save(cookbookDb);
-        return ResponseEntity.ok(updatedCookbook);  // ✅ 200 OK es suficiente
+        return ResponseEntity.ok(updatedCookbook);  // 200 OK es suficiente
     }
     
 }
