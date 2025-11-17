@@ -17,6 +17,21 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+/* Entidad JPA que representa la tabla "ingredients" en la base de datos. 
+ * Mapea la estructura de la tabla de ingredientes con sus atributos básicos
+ * y operaciones de persistencia automáticas.
+*
+ * @author Andy Garcia
+ * @version 1.0
+ * @since 2025
+ * 
+ * @see IngredientsService
+ * @see IngredientsRepository
+ * 
+ * @entity
+ * @table ingredients
+ */
+
 @Setter
 @Getter
 @AllArgsConstructor

@@ -5,4 +5,6 @@ import com.agarcia.microservice_cookbook.persistence.models.CookbookEntity;
 
 public interface CookbookService extends CommonService<CookbookEntity> {
     
+    public CookbookEntity findCookbookByIngredientId(Long ingredientId);
+    
 }

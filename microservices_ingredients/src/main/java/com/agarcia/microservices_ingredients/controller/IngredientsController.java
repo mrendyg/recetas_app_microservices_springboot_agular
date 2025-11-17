@@ -4,6 +4,7 @@ import java.util.Optional;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -33,5 +34,11 @@ public class IngredientsController extends CommonController<IngredientsEntity, I
         ingredientsDB.setStock(ingredientsEntity.getStock());
         return ResponseEntity.status(HttpStatus.ACCEPTED).body(service.save(ingredientsDB));
     }
+
+    @GetMapping("/search-by-name/{term}")
+    public ResponseEntity<?> searchByName(@PathVariable String term){
+        return ResponseEntity.ok(service.findByName(term));
+    }
+
 
 }

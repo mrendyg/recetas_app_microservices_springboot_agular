@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -76,5 +77,12 @@ public class CookbookController extends CommonController<CookbookEntity, Cookboo
         CookbookEntity updatedCookbook = service.save(cookbookDb);
         return ResponseEntity.ok(updatedCookbook);  // 200 OK es suficiente
     }
+
+    @GetMapping("/ingredient/{ingredientId}")
+    public ResponseEntity<?> getCookbookByIngredientId(@PathVariable Long ingredientId) {
+        CookbookEntity cookbook = service.findCookbookByIngredientId(ingredientId);
+        return ResponseEntity.ok((cookbook));
+    }
+    
     
 }
