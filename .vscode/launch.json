@@ -48,6 +48,17 @@
             "mainClass": "com.agarcia.microservice_cookbook.MicroserviceCookbookApplication",
             "projectName": "microservice_cookbook",
             "args": "",
+            "envFile": "${workspaceFolder}/.env",
+            "vmArgs": " -Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.port=59600 -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false -Dspring.jmx.enabled=true -Djava.rmi.server.hostname=localhost -Dspring.application.admin.enabled=true -Dspring.boot.project.name=microservice_cookbook"
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-SalesMicroservicesApplication<sales_microservices>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.agarcia.sales_microservices.SalesMicroservicesApplication",
+            "projectName": "sales_microservices",
+            "args": "",
             "envFile": "${workspaceFolder}/.env"
         }
     ]
